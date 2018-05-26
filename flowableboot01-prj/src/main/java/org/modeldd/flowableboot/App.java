@@ -25,7 +25,7 @@ public class App {
         SpringApplication.run(App.class, args);
     }
     
-    
+    /*
     @Bean
     public CommandLineRunner init(final RepositoryService repositoryService,
                                   final RuntimeService runtimeService,
@@ -53,7 +53,6 @@ public class App {
     			variables.put("nrOfHolidays", nrOfHolidays);
     			variables.put("description", description);
     			ProcessInstance processInstance = runtimeService.startProcessInstanceByKey("flowableplay01", variables);
-    			if( processInstance != null){}/*CQT*/
     			
     			// From FlowablePlay01QueryTasks01.java
     
@@ -113,10 +112,10 @@ public class App {
     			}
     			
 
-    			/* Dig deeper in details
-    			 * as i.e. https://github.com/flowable/flowable-engine/blob/master/modules/flowable-engine/src/test/java/org/flowable/standalone/history/FullHistoryTest.java
-    			 * https://www.flowable.org/docs/javadocs/org/flowable/engine/history/HistoricDetail.html
-    			 */
+    			// Dig deeper in details
+    			// as i.e. https://github.com/flowable/flowable-engine/blob/master/modules/flowable-engine/src/test/java/org/flowable/standalone/history/FullHistoryTest.java
+    			// https://www.flowable.org/docs/javadocs/org/flowable/engine/history/HistoricDetail.html
+    		
     	        System.out.println( "\n\norg.modeldd.flowableplay01.FlowablePlay01TasksHistoryDeeper01 each HistoricActivityInstance");
 
     	        HistoricActivityInstance historicStartEvent = historyService.createHistoricActivityInstanceQuery()
@@ -251,7 +250,6 @@ public class App {
         			variables.put("var_PayloadVolumetUnit", aPayloadVolumeUnit);
 
     				ProcessInstance processInstance = runtimeService.startProcessInstanceByKey("proc_ShippingExchange_AnnouncePayload", variables);
-        			if( processInstance != null){}/*CQT*/
         			
         
         			List<Task> tasks = taskService.createTaskQuery().taskCandidateGroup("shippingClients").list();
@@ -308,10 +306,9 @@ public class App {
         			}
         			
 
-        			/* Dig deeper in details
-        			 * as i.e. https://github.com/flowable/flowable-engine/blob/master/modules/flowable-engine/src/test/java/org/flowable/standalone/history/FullHistoryTest.java
-        			 * https://www.flowable.org/docs/javadocs/org/flowable/engine/history/HistoricDetail.html
-        			 */
+        			// Dig deeper in details
+        			// as i.e. https://github.com/flowable/flowable-engine/blob/master/modules/flowable-engine/src/test/java/org/flowable/standalone/history/FullHistoryTest.java
+        			// https://www.flowable.org/docs/javadocs/org/flowable/engine/history/HistoricDetail.html        			
         	        System.out.println( "\n\norg.modeldd.flowableplay01.FlowablePlay01TasksHistoryDeeper01 each HistoricActivityInstance");
 
         	        HistoricActivityInstance historicStartEvent = historyService.createHistoricActivityInstanceQuery()
@@ -402,6 +399,6 @@ public class App {
                 
             };
         };
-        
+        */
 }
 

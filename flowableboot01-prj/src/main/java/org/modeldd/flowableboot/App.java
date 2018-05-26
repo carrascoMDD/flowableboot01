@@ -233,7 +233,7 @@ public class App {
         			String aPayloadKind = "SteelRoll";
         			Integer aPayloadWeight = 12000;
         			String aPayloadWeightUnit = "Kg";
-        			Integer aPayloadVolume = 1500;
+        			Integer aPayloadVolume = 2;
         			String aPayloadVolumeUnit = "M3";
         			
         			System.out.println("fpty_PayloadKind? > " + aPayloadKind);

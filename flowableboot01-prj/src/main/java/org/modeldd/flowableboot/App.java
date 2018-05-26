@@ -213,11 +213,206 @@ public class App {
     	        System.out.println( "\n\n");
               
             }
-            
-            
-            
+       
         };
-    }
-    
+        };
+        
+        
+        @Bean
+        public CommandLineRunner init2(final RepositoryService repositoryService,
+                                      final RuntimeService runtimeService,
+                                      final TaskService taskService,
+                                      final HistoryService historyService) {
+
+            return new CommandLineRunner() {
+                @Override
+                public void run(String... strings) throws Exception {
+                    System.out.println("Number of process definitions : "
+                    	+ repositoryService.createProcessDefinitionQuery().count());
+                    
+        			String aPayloadKind = "SteelRoll";
+        			Integer aPayloadWeight = 12000;
+        			String aPayloadWeightUnit = "Kg";
+        			Integer aPayloadVolume = 1500;
+        			String aPayloadVolumeUnit = "M3";
+        			
+        			System.out.println("fpty_PayloadKind? > " + aPayloadKind);
+        			System.out.println("fpty_PayloadWeight? > " + aPayloadWeight);
+        			System.out.println("fpty_PayloadWeightUnit? > " + aPayloadWeightUnit);
+        			System.out.println("fpty_PayloadVolume? > " + aPayloadVolume);
+        			System.out.println("fpty_PayloadVolumeUnit? > " + aPayloadVolumeUnit);
+
+        	
+        			Map<String, Object> variables = new HashMap<String, Object>();
+        			variables.put("var_PayloadKind", aPayloadKind);
+        			variables.put("var_PayloadWeight", aPayloadWeight);
+        			variables.put("var_PayloadWeightUnit", aPayloadWeightUnit);
+        			variables.put("var_PayloadVolume", aPayloadVolume);
+        			variables.put("var_PayloadVolumetUnit", aPayloadVolumeUnit);
+
+    				ProcessInstance processInstance = runtimeService.startProcessInstanceByKey("proc_ShippingExchange_AnnouncePayload", variables);
+        			if( processInstance != null){}/*CQT*/
+        			
+        
+        			List<Task> tasks = taskService.createTaskQuery().taskCandidateGroup("shippingClients").list();
+        			System.out.println("You have " + tasks.size() + " tasks:");
+        			for (int i=0; i<tasks.size(); i++) {
+        			  System.out.println((i+1) + ") " + tasks.get(i).getName());
+        			}
+        			
+        			System.out.println("\n\nYou have " + tasks.size() + " tasks (detailed):");
+        			for (int i=0; i<tasks.size(); i++) {
+        			  Task task = tasks.get(i);
+        			  Map<String, Object> processVariables = taskService.getVariables(task.getId());
+        			  System.out.println( (i+1) + ") " + task.getName() + ": " + 
+        					  "var_PayloadKind=" + processVariables.get("var_PayloadKind") + " " +
+        					  "var_PayloadWeight=" + processVariables.get("var_PayloadWeight") + " " +
+        					  "var_PayloadWeightUnit=" + processVariables.get("var_PayloadWeightUnit") + " " +
+        					  "var_PayloadVolume=" + processVariables.get("var_PayloadVolume") + " " +
+        					  "var_PayloadVolumetUnit=" + processVariables.get("var_PayloadVolumetUnit") + "\n\n" );
+        			}
+        			
+        			
+        			// From FlowablePlay01CompleteTask01.java			
+        			int taskIndex = 1;		
+        			System.out.println("Which task would you like to complete? > " + taskIndex);
+        			
+        			Task taskToComplete = tasks.get(taskIndex - 1);
+        			Map<String, Object> processVariables = taskService.getVariables(taskToComplete.getId());
+        			System.out.println(
+        					"var_PayloadKind=" + processVariables.get("var_PayloadKind") + " " +
+              					  "var_PayloadWeight=" + processVariables.get("var_PayloadWeight") + " " +
+              					  "var_PayloadWeightUnit=" + processVariables.get("var_PayloadWeightUnit") + " " +
+              					  "var_PayloadVolume=" + processVariables.get("var_PayloadVolume") + " " +
+              					  "var_PayloadVolumetUnit=" + processVariables.get("var_PayloadVolumetUnit") + "\n\n" + 
+              					  "Do you approve this? > y");
+        			
+        			boolean approved = "y".toLowerCase().equals("y");
+        			variables = new HashMap<String, Object>();
+        			variables.put("approved", approved);
+        			taskService.complete(taskToComplete.getId(), variables);
+        			
+        			
+        			
+        			// From FlowablePlay01TasksHistory01.java
+        			List<HistoricActivityInstance> activities =
+        			  historyService.createHistoricActivityInstanceQuery()
+        			   .processInstanceId(processInstance.getId())
+        			   .finished()
+        			   .orderByHistoricActivityInstanceEndTime().asc()
+        			   .list();
+
+        			for (HistoricActivityInstance activity : activities) {
+        			  System.out.println(activity.getActivityId() + " took "
+        			    + activity.getDurationInMillis() + " milliseconds");
+        			}
+        			
+
+        			/* Dig deeper in details
+        			 * as i.e. https://github.com/flowable/flowable-engine/blob/master/modules/flowable-engine/src/test/java/org/flowable/standalone/history/FullHistoryTest.java
+        			 * https://www.flowable.org/docs/javadocs/org/flowable/engine/history/HistoricDetail.html
+        			 */
+        	        System.out.println( "\n\norg.modeldd.flowableplay01.FlowablePlay01TasksHistoryDeeper01 each HistoricActivityInstance");
+
+        	        HistoricActivityInstance historicStartEvent = historyService.createHistoricActivityInstanceQuery()
+        	        		.processInstanceId(processInstance.getId()).activityId("startEvent").singleResult();
+        	        System.out.println( "\n\n" + 
+        	        		"processDefinitionId=" + historicStartEvent.getProcessDefinitionId() + " " + 
+                			"processInstanceId=" + historicStartEvent.getProcessInstanceId() + " " + 
+                			"activityId=" + historicStartEvent.getActivityId() + " " + 
+        	        		"activityType=" + historicStartEvent.getActivityType() + " " + 
+        	        		"historicActivityInstance_id=" + historicStartEvent.getId() + " " + 
+        	        		"executionId=" + historicStartEvent.getExecutionId() + " " + 
+                			"durationInMillis=" + historicStartEvent.getDurationInMillis() + "\n\n");
+        	        
+        	        HistoricActivityInstance historicApproveTask = historyService.createHistoricActivityInstanceQuery()
+        	        		.processInstanceId(processInstance.getId()).activityId("approveTask").singleResult();
+        	        System.out.println( "\n\n" + 
+        	        		"processDefinitionId=" + historicApproveTask.getProcessDefinitionId() + " " + 
+                			"processInstanceId=" + historicApproveTask.getProcessInstanceId() + " " + 
+                			"activityId=" + historicApproveTask.getActivityId() + " " + 
+        	        		"activityType=" + historicApproveTask.getActivityType() + " " + 
+        	        		"historicActivityInstance_id=" + historicApproveTask.getId() + " " + 
+        	        		"executionId=" + historicApproveTask.getExecutionId() + " " + 
+                			"durationInMillis=" + historicApproveTask.getDurationInMillis() + "\n\n");
+        	        
+        	        HistoricActivityInstance historicDecision = historyService.createHistoricActivityInstanceQuery()
+        	        		.processInstanceId(processInstance.getId()).activityId("decision").singleResult();
+        	        System.out.println( "\n\n" + 
+        	        		"processDefinitionId=" + historicDecision.getProcessDefinitionId() + " " + 
+                			"processInstanceId=" + historicDecision.getProcessInstanceId() + " " + 
+                			"activityId=" + historicDecision.getActivityId() + " " + 
+        	        		"activityType=" + historicDecision.getActivityType() + " " + 
+        	        		"historicActivityInstance_id=" + historicDecision.getId() + " " + 
+        	        		"executionId=" + historicDecision.getExecutionId() + " " + 
+                			"durationInMillis=" + historicDecision.getDurationInMillis() + "\n\n");
+
+        	        HistoricActivityInstance historicExternalSystemCall = historyService.createHistoricActivityInstanceQuery()
+        	        		.processInstanceId(processInstance.getId()).activityId("externalSystemCall").singleResult();
+        	        System.out.println( "\n\n" + 
+        	        		"processDefinitionId=" + historicExternalSystemCall.getProcessDefinitionId() + " " + 
+                			"processInstanceId=" + historicExternalSystemCall.getProcessInstanceId() + " " + 
+                			"activityId=" + historicExternalSystemCall.getActivityId() + " " + 
+        	        		"activityType=" + historicExternalSystemCall.getActivityType() + " " + 
+        	        		"historicActivityInstance_id=" + historicExternalSystemCall.getId() + " " + 
+        	        		"executionId=" + historicExternalSystemCall.getExecutionId() + " " + 
+                			"durationInMillis=" + historicExternalSystemCall.getDurationInMillis() + "\n\n");
+
+        	        HistoricActivityInstance historicHolidayApprovedTask = historyService.createHistoricActivityInstanceQuery()
+        	        		.processInstanceId(processInstance.getId()).activityId("holidayApprovedTask").singleResult();
+        	        System.out.println( "\n\n" + 
+        	        		"processDefinitionId=" + historicHolidayApprovedTask.getProcessDefinitionId() + " " + 
+                			"processInstanceId=" + historicHolidayApprovedTask.getProcessInstanceId() + " " + 
+                			"activityId=" + historicHolidayApprovedTask.getActivityId() + " " + 
+        	        		"activityType=" + historicHolidayApprovedTask.getActivityType() + " " + 
+        	        		"historicActivityInstance_id=" + historicHolidayApprovedTask.getId() + " " + 
+        	        		"executionId=" + historicHolidayApprovedTask.getExecutionId() + " " + 
+                			"durationInMillis=" + historicHolidayApprovedTask.getDurationInMillis() + "\n\n");
+        	        
+        	        
+        	        List<HistoricVariableInstance> historicVariableInstances = historyService.createHistoricVariableInstanceQuery()
+        	        		.orderByVariableName().asc().list();
+
+        	        System.out.println( "\n\n" + "org.modeldd.flowableplay01.FlowablePlay01TasksHistoryDeeper01 " +
+        	        		"num historicVariableInstances=" + historicVariableInstances.size());
+        	        
+        	        for (HistoricVariableInstance aHistoricVariableInstance : historicVariableInstances) {
+                		String aValueStr = "";
+                		Object aValue = aHistoricVariableInstance.getValue();
+                		switch( aHistoricVariableInstance.getVariableTypeName()) {
+                			case "boolean":
+                				aValueStr = aValue.toString();
+                				break;
+                				
+                			case "integer":
+                				aValueStr = aValue.toString();
+                				break;
+                				
+                			case "string":
+                				aValueStr = aValue.toString();
+                				break;
+                				
+            				default:
+            					aValueStr = aValue.toString();
+                				break;
+                		}
+                			
+        	        	System.out.println( "\n\n" + 
+        	 	        		"id=" + aHistoricVariableInstance.getId() + " " + 
+        	         			"processInstanceId=" + aHistoricVariableInstance.getProcessInstanceId() + " " + 
+        	         			"taskId=" + aHistoricVariableInstance.getTaskId() + " " + 
+        	 	        		"variable name=" + aHistoricVariableInstance.getVariableName() + " " + 
+        	 	        		"variable type name=" + aHistoricVariableInstance.getVariableTypeName() + " " + 
+        	 	        		"value=" + aValueStr + "\n\n");
+        			 }	        
+        	        System.out.println( "\n\n");
+                  
+                }
+                
+                
+                
+            };
+        };
+        
 }
 

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.modeldd.org/flowableboot01">
+  <process id="proc_ShippingExchange_AnnouncePayload" name="Shipping Exchange Announce Payload" isExecutable="true">
+    <startEvent id="startevent1" name="Start"></startEvent>
+    <userTask id="utsk_VerifyPayloadOriginDestinationDates" name="Verify Payload Origin Destination Dates" activiti:candidateGroups="shippingClients">
+      <extensionElements>
+        <activiti:formProperty id="fpty_PayloadKind" name="Payload Kind" type="string" variable="var_PayloadKind" required="true"></activiti:formProperty>
+        <activiti:formProperty id="fpty_PayloadWeight" name="Payload Weight" type="integer" variable="var_PayloadWeight" required="true"></activiti:formProperty>
+        <activiti:formProperty id="fpty_PayloadWeightUnit" name="Payload Weight Unit" type="string" variable="var_PayloadWeightUnit" required="true"></activiti:formProperty>
+        <activiti:formProperty id="fpty_PayloadVolume" name="Payload Volume" type="integer" variable="var_PayloadVolume"></activiti:formProperty>
+        <activiti:formProperty id="fpty_PayloadWeightUnit" name="Payload Volume Unit" type="string" variable="var_PayloadVolumeUnit" required="true"></activiti:formProperty>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="flow1" sourceRef="startevent1" targetRef="utsk_VerifyPayloadOriginDestinationDates"></sequenceFlow>
+    <serviceTask id="stsk_RegisterInterestOnTransportOffers" name="Register Interest on Transport Offers" activiti:class="org.modeldd.flowableboot.RegisterInterestOnTransportOffers"></serviceTask>
+    <sequenceFlow id="flow2" sourceRef="utsk_VerifyPayloadOriginDestinationDates" targetRef="stsk_RegisterInterestOnTransportOffers"></sequenceFlow>
+    <serviceTask id="stsk_PublishPayloadAdvertisement" name="Publish  Payload  Advertisement" isForCompensation="true" activiti:class="org.modeldd.flowableboot.PublishPayloadAdvertisement"></serviceTask>
+    <sequenceFlow id="flow3" sourceRef="stsk_RegisterInterestOnTransportOffers" targetRef="stsk_PublishPayloadAdvertisement"></sequenceFlow>
+    <endEvent id="endevent1" name="End"></endEvent>
+    <sequenceFlow id="flow4" sourceRef="stsk_PublishPayloadAdvertisement" targetRef="endevent1"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_proc_ShippingExchange_AnnouncePayload">
+    <bpmndi:BPMNPlane bpmnElement="proc_ShippingExchange_AnnouncePayload" id="BPMNPlane_proc_ShippingExchange_AnnouncePayload">
+      <bpmndi:BPMNShape bpmnElement="startevent1" id="BPMNShape_startevent1">
+        <omgdc:Bounds height="35.0" width="35.0" x="164.0" y="40.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="utsk_VerifyPayloadOriginDestinationDates" id="BPMNShape_utsk_VerifyPayloadOriginDestinationDates">
+        <omgdc:Bounds height="55.0" width="244.0" x="61.0" y="100.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="stsk_RegisterInterestOnTransportOffers" id="BPMNShape_stsk_RegisterInterestOnTransportOffers">
+        <omgdc:Bounds height="55.0" width="244.0" x="60.0" y="220.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="stsk_PublishPayloadAdvertisement" id="BPMNShape_stsk_PublishPayloadAdvertisement">
+        <omgdc:Bounds height="55.0" width="244.0" x="61.0" y="330.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="endevent1" id="BPMNShape_endevent1">
+        <omgdc:Bounds height="35.0" width="35.0" x="165.0" y="430.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
+        <omgdi:waypoint x="181.0" y="75.0"></omgdi:waypoint>
+        <omgdi:waypoint x="183.0" y="100.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
+        <omgdi:waypoint x="183.0" y="155.0"></omgdi:waypoint>
+        <omgdi:waypoint x="182.0" y="220.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow3" id="BPMNEdge_flow3">
+        <omgdi:waypoint x="182.0" y="275.0"></omgdi:waypoint>
+        <omgdi:waypoint x="183.0" y="330.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow4" id="BPMNEdge_flow4">
+        <omgdi:waypoint x="183.0" y="385.0"></omgdi:waypoint>
+        <omgdi:waypoint x="182.0" y="430.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

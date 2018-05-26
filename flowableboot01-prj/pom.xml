@@ -12,7 +12,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.2.7.RELEASE</version>
+        <version>1.5.10.RELEASE</version>
     </parent>
 
     <properties>
@@ -23,6 +23,7 @@
         <log4jdbc.log4j2.version>1.16</log4jdbc.log4j2.version>
         <rest.assured.version>2.3.3</rest.assured.version>
         <flowable.version>6.3.1</flowable.version>
+        <h2.version>1.4.197</h2.version>
     </properties>
 
     <dependencies>
@@ -66,7 +67,11 @@
             <artifactId>flowable-spring-boot-starter</artifactId>
             <version>${flowable.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2.version}</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

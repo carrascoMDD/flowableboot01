@@ -315,7 +315,7 @@ public class App {
         	        System.out.println( "\n\norg.modeldd.flowableplay01.FlowablePlay01TasksHistoryDeeper01 each HistoricActivityInstance");
 
         	        HistoricActivityInstance historicStartEvent = historyService.createHistoricActivityInstanceQuery()
-        	        		.processInstanceId(processInstance.getId()).activityId("startEvent").singleResult();
+        	        		.processInstanceId(processInstance.getId()).activityId("startevent1").singleResult();
         	        System.out.println( "\n\n" + 
         	        		"processDefinitionId=" + historicStartEvent.getProcessDefinitionId() + " " + 
                 			"processInstanceId=" + historicStartEvent.getProcessInstanceId() + " " + 
@@ -325,50 +325,39 @@ public class App {
         	        		"executionId=" + historicStartEvent.getExecutionId() + " " + 
                 			"durationInMillis=" + historicStartEvent.getDurationInMillis() + "\n\n");
         	        
-        	        HistoricActivityInstance historicApproveTask = historyService.createHistoricActivityInstanceQuery()
-        	        		.processInstanceId(processInstance.getId()).activityId("approveTask").singleResult();
+        	        HistoricActivityInstance historicVerifyPayloadOriginDestinationDates = historyService.createHistoricActivityInstanceQuery()
+        	        		.processInstanceId(processInstance.getId()).activityId("utsk_VerifyPayloadOriginDestinationDates").singleResult();
         	        System.out.println( "\n\n" + 
-        	        		"processDefinitionId=" + historicApproveTask.getProcessDefinitionId() + " " + 
-                			"processInstanceId=" + historicApproveTask.getProcessInstanceId() + " " + 
-                			"activityId=" + historicApproveTask.getActivityId() + " " + 
-        	        		"activityType=" + historicApproveTask.getActivityType() + " " + 
-        	        		"historicActivityInstance_id=" + historicApproveTask.getId() + " " + 
-        	        		"executionId=" + historicApproveTask.getExecutionId() + " " + 
-                			"durationInMillis=" + historicApproveTask.getDurationInMillis() + "\n\n");
+        	        		"processDefinitionId=" + historicVerifyPayloadOriginDestinationDates.getProcessDefinitionId() + " " + 
+                			"processInstanceId=" + historicVerifyPayloadOriginDestinationDates.getProcessInstanceId() + " " + 
+                			"activityId=" + historicVerifyPayloadOriginDestinationDates.getActivityId() + " " + 
+        	        		"activityType=" + historicVerifyPayloadOriginDestinationDates.getActivityType() + " " + 
+        	        		"historicActivityInstance_id=" + historicVerifyPayloadOriginDestinationDates.getId() + " " + 
+        	        		"executionId=" + historicVerifyPayloadOriginDestinationDates.getExecutionId() + " " + 
+                			"durationInMillis=" + historicVerifyPayloadOriginDestinationDates.getDurationInMillis() + "\n\n");
         	        
-        	        HistoricActivityInstance historicDecision = historyService.createHistoricActivityInstanceQuery()
-        	        		.processInstanceId(processInstance.getId()).activityId("decision").singleResult();
+        	        HistoricActivityInstance historicRegisterInterestOnTransportOffers = historyService.createHistoricActivityInstanceQuery()
+        	        		.processInstanceId(processInstance.getId()).activityId("stsk_RegisterInterestOnTransportOffers").singleResult();
         	        System.out.println( "\n\n" + 
-        	        		"processDefinitionId=" + historicDecision.getProcessDefinitionId() + " " + 
-                			"processInstanceId=" + historicDecision.getProcessInstanceId() + " " + 
-                			"activityId=" + historicDecision.getActivityId() + " " + 
-        	        		"activityType=" + historicDecision.getActivityType() + " " + 
-        	        		"historicActivityInstance_id=" + historicDecision.getId() + " " + 
-        	        		"executionId=" + historicDecision.getExecutionId() + " " + 
-                			"durationInMillis=" + historicDecision.getDurationInMillis() + "\n\n");
+        	        		"processDefinitionId=" + historicRegisterInterestOnTransportOffers.getProcessDefinitionId() + " " + 
+                			"processInstanceId=" + historicRegisterInterestOnTransportOffers.getProcessInstanceId() + " " + 
+                			"activityId=" + historicRegisterInterestOnTransportOffers.getActivityId() + " " + 
+        	        		"activityType=" + historicRegisterInterestOnTransportOffers.getActivityType() + " " + 
+        	        		"historicActivityInstance_id=" + historicRegisterInterestOnTransportOffers.getId() + " " + 
+        	        		"executionId=" + historicRegisterInterestOnTransportOffers.getExecutionId() + " " + 
+                			"durationInMillis=" + historicRegisterInterestOnTransportOffers.getDurationInMillis() + "\n\n");
 
-        	        HistoricActivityInstance historicExternalSystemCall = historyService.createHistoricActivityInstanceQuery()
-        	        		.processInstanceId(processInstance.getId()).activityId("externalSystemCall").singleResult();
+        	        HistoricActivityInstance historicPublishPayloadAdvertisement = historyService.createHistoricActivityInstanceQuery()
+        	        		.processInstanceId(processInstance.getId()).activityId("stsk_PublishPayloadAdvertisement").singleResult();
         	        System.out.println( "\n\n" + 
-        	        		"processDefinitionId=" + historicExternalSystemCall.getProcessDefinitionId() + " " + 
-                			"processInstanceId=" + historicExternalSystemCall.getProcessInstanceId() + " " + 
-                			"activityId=" + historicExternalSystemCall.getActivityId() + " " + 
-        	        		"activityType=" + historicExternalSystemCall.getActivityType() + " " + 
-        	        		"historicActivityInstance_id=" + historicExternalSystemCall.getId() + " " + 
-        	        		"executionId=" + historicExternalSystemCall.getExecutionId() + " " + 
-                			"durationInMillis=" + historicExternalSystemCall.getDurationInMillis() + "\n\n");
-
-        	        HistoricActivityInstance historicHolidayApprovedTask = historyService.createHistoricActivityInstanceQuery()
-        	        		.processInstanceId(processInstance.getId()).activityId("holidayApprovedTask").singleResult();
-        	        System.out.println( "\n\n" + 
-        	        		"processDefinitionId=" + historicHolidayApprovedTask.getProcessDefinitionId() + " " + 
-                			"processInstanceId=" + historicHolidayApprovedTask.getProcessInstanceId() + " " + 
-                			"activityId=" + historicHolidayApprovedTask.getActivityId() + " " + 
-        	        		"activityType=" + historicHolidayApprovedTask.getActivityType() + " " + 
-        	        		"historicActivityInstance_id=" + historicHolidayApprovedTask.getId() + " " + 
-        	        		"executionId=" + historicHolidayApprovedTask.getExecutionId() + " " + 
-                			"durationInMillis=" + historicHolidayApprovedTask.getDurationInMillis() + "\n\n");
-        	        
+        	        		"processDefinitionId=" + historicPublishPayloadAdvertisement.getProcessDefinitionId() + " " + 
+                			"processInstanceId=" + historicPublishPayloadAdvertisement.getProcessInstanceId() + " " + 
+                			"activityId=" + historicPublishPayloadAdvertisement.getActivityId() + " " + 
+        	        		"activityType=" + historicPublishPayloadAdvertisement.getActivityType() + " " + 
+        	        		"historicActivityInstance_id=" + historicPublishPayloadAdvertisement.getId() + " " + 
+        	        		"executionId=" + historicPublishPayloadAdvertisement.getExecutionId() + " " + 
+                			"durationInMillis=" + historicPublishPayloadAdvertisement.getDurationInMillis() + "\n\n");
+       	        
         	        
         	        List<HistoricVariableInstance> historicVariableInstances = historyService.createHistoricVariableInstanceQuery()
         	        		.orderByVariableName().asc().list();

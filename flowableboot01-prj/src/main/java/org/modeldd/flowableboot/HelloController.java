@@ -20,6 +20,11 @@ public class HelloController {
 
     @Data
     static class Result {
+    	public Result( int theLeft, int theRight, long theAnswer) {
+    		this.left = theLeft;
+    		this.right = theRight;
+    		this.answer = theAnswer;    			
+    	}
         private final int left;
         private final int right;
         private final long answer;

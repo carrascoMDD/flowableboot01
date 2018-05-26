@@ -91,9 +91,9 @@ public class ShippingExchange_AnnouncePayload_Test {
 			  "size": 1
 			}
 				 */
-		mvc.perform(get("/repository/process-definitions").accept(MediaType.APPLICATION_JSON_VALUE)).andExpect(status().isOk());
-				// .andExpect(jsonPath("$.data[ 0].key", is("proc_ShippingExchange_AnnouncePayload")))
-				// .andExpect(jsonPath("$.data[ 0].name", is("Shipping Exchange Announce Payload")));
+		mvc.perform(get("/repository/process-definitions").accept(MediaType.APPLICATION_JSON_VALUE)).andExpect(status().isOk())
+				.andExpect(jsonPath("$.data[ 0].key", is("proc_ShippingExchange_AnnouncePayload")))
+				.andExpect(jsonPath("$.data[ 0].name", is("Shipping Exchange Announce Payload")));
 	}
 
 	

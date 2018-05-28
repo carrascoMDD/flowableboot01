@@ -86,7 +86,7 @@ public class ShippingExchange_AnnouncePayload_Test {
     private JacksonTester<DataResponse<ProcessDefinitionResponse>> json_ProcessDefinitionResponse;
     private JacksonTester<ProcessInstanceResponse>  			   json_ProcessInstanceResponse;
     private JacksonTester<TaskQueryRequest>  			           json_TaskQueryRequest;
-    private JacksonTester<DataResponse<TaskResponse>> 		     json_TaskResponse;
+    private JacksonTester<DataResponse<TaskResponse>> 		       json_TaskResponse;
 
     
     

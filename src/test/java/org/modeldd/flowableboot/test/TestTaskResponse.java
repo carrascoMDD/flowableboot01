@@ -44,7 +44,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
  * @author acv
  *
  */
-public class TaskResponseForTest  {
+public class TestTaskResponse  {
 
 	protected String id;
     public String getId() {

@@ -85,7 +85,7 @@ public class FlowablePlay01Test {
 	public JacksonTester<ProcessInstanceCreateRequest> 				json_ProcessInstanceCreateRequest;
 	public JacksonTester<ProcessInstanceResponse> 					json_ProcessInstanceResponse;
 	public JacksonTester<TaskQueryRequest>  						json_TaskQueryRequest;
-	public JacksonTester<DataResponse<TaskResponseForTest>> 		json_TaskResponseForTest;
+	public JacksonTester<DataResponse<TestTaskResponse>> 		json_TestTaskResponse;
 	public JacksonTester<List<RestVariable>> 						json_ListRestVariable;
 	public JacksonTester<TaskActionRequest> 						json_TaskActionRequest;
 
@@ -108,7 +108,7 @@ public class FlowablePlay01Test {
 				json_ProcessInstanceCreateRequest,
 				json_ProcessInstanceResponse,
 				json_TaskQueryRequest,
-				json_TaskResponseForTest,
+				json_TestTaskResponse,
 				json_ListRestVariable,
 				json_TaskActionRequest
 				);
@@ -158,7 +158,7 @@ public class FlowablePlay01Test {
 				json_ProcessInstanceCreateRequest,
 				json_ProcessInstanceResponse,
 				json_TaskQueryRequest,
-				json_TaskResponseForTest,
+				json_TestTaskResponse,
 				json_ListRestVariable,
 				json_TaskActionRequest);
 
@@ -168,11 +168,11 @@ public class FlowablePlay01Test {
 				10 /* theNrOfHolidays */,
 				"Family reunion" /* theDescription */);
 
-		TaskResponseForTest aTaskResponseForTest = taskService_createTaskQuery_returnFirst( aHelper, "managers");
+		TestTaskResponse aTestTaskResponse = taskService_createTaskQuery_returnFirst( aHelper, "managers");
 
-		List<RestVariable> someTaskVariables = taskService_getVariables( aHelper, aTaskResponseForTest);
+		List<RestVariable> someTaskVariables = taskService_getVariables( aHelper, aTestTaskResponse);
 		if( someTaskVariables == null) {}/*CQT*/
-		Boolean aCompleted = taskService_complete( aHelper, aTaskResponseForTest, true);
+		Boolean aCompleted = taskService_complete( aHelper, aTestTaskResponse, true);
 		if( aCompleted) {}/*CQT*/
 	}
 
@@ -201,24 +201,24 @@ public class FlowablePlay01Test {
 
 
 
-	private TaskResponseForTest taskService_createTaskQuery_returnFirst( FlowableRESTAPIhelper theHelper,
+	private TestTaskResponse taskService_createTaskQuery_returnFirst( FlowableRESTAPIhelper theHelper,
 															 			 String theCandidateGroupName) throws Exception {
 
-		List<TaskResponseForTest> someTaskResponseForTest = theHelper.taskService_createTaskQuery_taskCandidateGroup( theCandidateGroupName);
-		assertThat( someTaskResponseForTest, notNullValue());
-		Integer aNumTaskResponseForTest = someTaskResponseForTest.size();
-		assertThat( aNumTaskResponseForTest > 0, is( true));
+		List<TestTaskResponse> someTestTaskResponse = theHelper.taskService_createTaskQuery_taskCandidateGroup( theCandidateGroupName);
+		assertThat( someTestTaskResponse, notNullValue());
+		Integer aNumTestTaskResponse = someTestTaskResponse.size();
+		assertThat( aNumTestTaskResponse > 0, is( true));
 
-		TaskResponseForTest aTaskResponseForTest = someTaskResponseForTest.get( 0);
-		assertThat( aTaskResponseForTest, notNullValue());
+		TestTaskResponse aTestTaskResponse = someTestTaskResponse.get( 0);
+		assertThat( aTestTaskResponse, notNullValue());
 
-		return aTaskResponseForTest;
+		return aTestTaskResponse;
 	}
 
 
 
 	private List<RestVariable> taskService_getVariables( FlowableRESTAPIhelper theHelper,
-														 TaskResponseForTest theTaskResponse) throws Exception {
+														 TestTaskResponse theTaskResponse) throws Exception {
 
 		List<RestVariable> someRestVariables = theHelper.taskService_getVariables( theTaskResponse.getId(), null /* theScope */);
 		theHelper.dumpTaskVariables( someRestVariables);
@@ -230,7 +230,7 @@ public class FlowablePlay01Test {
 
 	
 	private Boolean taskService_complete( FlowableRESTAPIhelper theHelper,
-									   TaskResponseForTest theTaskResponse,
+									   TestTaskResponse theTaskResponse,
 									   Boolean theApproved) throws Exception {
 
 		Map<String,Object> someVariables = new HashMap<String,Object>();

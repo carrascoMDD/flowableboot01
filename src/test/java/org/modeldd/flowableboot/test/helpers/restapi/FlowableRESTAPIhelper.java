@@ -43,6 +43,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 
+import org.modeldd.flowableboot.test.TestTaskResponse;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -57,7 +58,7 @@ import org.flowable.rest.service.api.runtime.task.TaskResponse;
 
 
 import org.modeldd.flowableboot.App;
-import org.modeldd.flowableboot.test.TaskResponseForTest;
+import org.modeldd.flowableboot.test.TestTaskResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
@@ -102,7 +103,7 @@ public class FlowableRESTAPIhelper {
     private JacksonTester<ProcessInstanceCreateRequest>             _v_Json_ProcessInstanceCreateRequest;
     private JacksonTester<ProcessInstanceResponse>                  _v_Json_ProcessInstanceResponse;
     private JacksonTester<TaskQueryRequest>                         _v_Json_TaskQueryRequest;
-    private JacksonTester<DataResponse<TaskResponseForTest>>        _v_Json_TaskResponseForTest;
+    private JacksonTester<DataResponse<TestTaskResponse>>        _v_Json_TestTaskResponse;
     private JacksonTester<List<RestVariable>>                       _v_Json_ListRestVariable;
     private JacksonTester<TaskActionRequest>                        _v_Json_TaskActionRequest;
     
@@ -120,7 +121,7 @@ public class FlowableRESTAPIhelper {
             JacksonTester<ProcessInstanceCreateRequest> theJson_ProcessInstanceCreateRequest,
             JacksonTester<ProcessInstanceResponse> theJson_ProcessInstanceResponse,
             JacksonTester<TaskQueryRequest> theJson_TaskQueryRequest,
-            JacksonTester<DataResponse<TaskResponseForTest>> theJson_TaskResponseForTest,
+            JacksonTester<DataResponse<TestTaskResponse>> theJson_TestTaskResponse,
             JacksonTester<List<RestVariable>> theJson_ListRestVariable,
             JacksonTester<TaskActionRequest> theJson_TaskActionRequest) {
         this._v_TestRestTemplate   = theTestRestTemplate;
@@ -136,7 +137,7 @@ public class FlowableRESTAPIhelper {
         this._v_Json_ProcessInstanceCreateRequest= theJson_ProcessInstanceCreateRequest; 
         this._v_Json_ProcessInstanceResponse     = theJson_ProcessInstanceResponse;      
         this._v_Json_TaskQueryRequest            = theJson_TaskQueryRequest;             
-        this._v_Json_TaskResponseForTest         = theJson_TaskResponseForTest;          
+        this._v_Json_TestTaskResponse         = theJson_TestTaskResponse;          
         this._v_Json_ListRestVariable            = theJson_ListRestVariable;             
         this._v_Json_TaskActionRequest           = theJson_TaskActionRequest;            
     }
@@ -215,7 +216,7 @@ public class FlowableRESTAPIhelper {
 
 
 
-    public List<TaskResponseForTest> taskService_createTaskQuery_taskCandidateGroup( String theCandidateGroupName) throws Exception {
+    public List<TestTaskResponse> taskService_createTaskQuery_taskCandidateGroup( String theCandidateGroupName) throws Exception {
         String aMethodName = "taskService_createTaskQuery_taskCandidateGroup";
         if( fAnyDump()) System.out.println( "\n\n" + aMethodName + " BEGIN");
 
@@ -234,15 +235,15 @@ public class FlowableRESTAPIhelper {
 
 		String aResponseBody = aResponseEntity.getBody();
 		if( this._v_DumpRawResponse) System.out.println( INDENT + "responseBody=\n" + aResponseBody);
-		DataResponse<TaskResponseForTest> aDataTaskResponseForTest = this._v_Json_TaskResponseForTest.parse( aResponseBody).getObject();
-		if( this._v_AssertEssential) assertThat( aDataTaskResponseForTest, notNullValue());
-		if( this._v_DumpParsedResponse) System.out.println( INDENT + "response=\n" + this._v_Json_TaskResponseForTest.write( aDataTaskResponseForTest).getJson() + "\n\n");
+		DataResponse<TestTaskResponse> aDataTestTaskResponse = this._v_Json_TestTaskResponse.parse( aResponseBody).getObject();
+		if( this._v_AssertEssential) assertThat( aDataTestTaskResponse, notNullValue());
+		if( this._v_DumpParsedResponse) System.out.println( INDENT + "response=\n" + this._v_Json_TestTaskResponse.write( aDataTestTaskResponse).getJson() + "\n\n");
 
-        List<TaskResponseForTest> someTaskResponseForTest = aDataTaskResponseForTest.getData();
-		if( this._v_AssertEssential) assertThat( someTaskResponseForTest, notNullValue());
+        List<TestTaskResponse> someTestTaskResponse = aDataTestTaskResponse.getData();
+		if( this._v_AssertEssential) assertThat( someTestTaskResponse, notNullValue());
         if( fAnyDump()) System.out.println( aMethodName + " END\n\n");
 
-		return someTaskResponseForTest;
+		return someTestTaskResponse;
 	}
 
 

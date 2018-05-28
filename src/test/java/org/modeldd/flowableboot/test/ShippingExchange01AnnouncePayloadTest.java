@@ -67,7 +67,7 @@ import org.modeldd.flowableboot.test.helpers.restapi.FlowableRESTAPIhelper;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = App.class, webEnvironment = WebEnvironment.RANDOM_PORT)
-public class ShippingExchange_AnnouncePayloadTest {
+public class ShippingExchange01AnnouncePayloadTest {
 
 	public static final String PROCESSDEFINITIONKEY  = "proc_ShippingExchange_AnnouncePayload";
 	public static final String PROCESSDEFINITIONNAME = "Shipping Exchange Announce Payload";
@@ -98,7 +98,8 @@ public class ShippingExchange_AnnouncePayloadTest {
 
 	@Test
 	public void repositoryService_createProcessDefinitionQuery() throws Exception {
-
+		System.out.println( "\n\n\n====================================================================================\n\n\n");
+		System.out.println( "\n\n\nShippingExchange01AnnouncePayloadTest repositoryService_createProcessDefinitionQuery\n\n\n");
 
 		FlowableRESTAPIhelper aHelper = new FlowableRESTAPIhelper(
 				testRestTemplate,
@@ -147,6 +148,8 @@ public class ShippingExchange_AnnouncePayloadTest {
 	@Test
 	public void startProcessInstanceByKey_createTaskQuery_getVariables_complete_createHistoricActivityInstanceQuery_createHistoricVariableInstanceQuery()
 			throws Exception {
+		System.out.println( "\n\n\n============================================================================================================================================================================\n\n\n");
+		System.out.println( "\n\n\nShippingExchange01AnnouncePayloadTest startProcessInstanceByKey_createTaskQuery_getVariables_complete_createHistoricActivityInstanceQuery_createHistoricVariableInstanceQuery\n\n\n");
 
 		FlowableRESTAPIhelper aHelper = new FlowableRESTAPIhelper(
 				testRestTemplate,

@@ -92,7 +92,8 @@ public class FlowablePlay01Test {
 
 	@Test
 	public void repositoryService_createProcessDefinitionQuery() throws Exception {
-
+		System.out.println( "\n\n\n=================================================================\n\n\n");
+		System.out.println( "\n\n\nFlowablePlay01Test repositoryService_createProcessDefinitionQuery\n\n\n");
 
 		FlowableRESTAPIhelper aHelper = new FlowableRESTAPIhelper(
 				testRestTemplate,
@@ -141,6 +142,8 @@ public class FlowablePlay01Test {
 	@Test
 	public void startProcessInstanceByKey_createTaskQuery_getVariables_complete_createHistoricActivityInstanceQuery_createHistoricVariableInstanceQuery()
 			throws Exception {
+		System.out.println( "\n\n\n=========================================================================================================================================================\n\n\n");
+		System.out.println( "\n\n\nFlowablePlay01Test startProcessInstanceByKey_createTaskQuery_getVariables_complete_createHistoricActivityInstanceQuery_createHistoricVariableInstanceQuery\n\n\n");
 
 		FlowableRESTAPIhelper aHelper = new FlowableRESTAPIhelper(
 				testRestTemplate,

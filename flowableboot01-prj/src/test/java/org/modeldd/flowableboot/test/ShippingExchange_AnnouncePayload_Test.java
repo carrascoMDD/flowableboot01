@@ -176,7 +176,9 @@ public class ShippingExchange_AnnouncePayload_Test {
 		TaskResponseForTest aTaskResponseForTest = taskService_createTaskQuery_returnFirst( aHelper, "shippingClients");
 
 		List<RestVariable> someTaskVariables = taskService_getVariables( aHelper, aTaskResponseForTest);
+		if( someTaskVariables == null) {}/*CQT*/
 		Boolean aCompleted = taskService_complete( aHelper, aTaskResponseForTest, true);
+		if( aCompleted) {}/*CQT*/
 	}
 
 

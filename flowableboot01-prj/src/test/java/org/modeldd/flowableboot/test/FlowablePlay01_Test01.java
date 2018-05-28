@@ -168,7 +168,9 @@ public class FlowablePlay01_Test01 {
 		TaskResponseForTest aTaskResponseForTest = taskService_createTaskQuery_returnFirst( aHelper, "managers");
 
 		List<RestVariable> someTaskVariables = taskService_getVariables( aHelper, aTaskResponseForTest);
+		if( someTaskVariables == null) {}/*CQT*/
 		Boolean aCompleted = taskService_complete( aHelper, aTaskResponseForTest, true);
+		if( aCompleted) {}/*CQT*/
 	}
 
 

@@ -1,5 +1,5 @@
 /*
- * org.modeldd.flowableboot.test.ShippingExchange_AnnouncePayload_Test.java
+ * org.modeldd.flowableboot.test.ShippingExchange_AnnouncePayload_Test01.java
  *
  * Created @author Antonio Carrasco Valero 201805260100
  *

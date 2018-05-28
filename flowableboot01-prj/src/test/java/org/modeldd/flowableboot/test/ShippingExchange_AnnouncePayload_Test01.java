@@ -67,7 +67,7 @@ import org.modeldd.flowableboot.test.helpers.restapi.FlowableRESTAPIhelper;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = App.class, webEnvironment = WebEnvironment.RANDOM_PORT)
-public class ShippingExchange_AnnouncePayload_Test {
+public class ShippingExchange_AnnouncePayload_Test01 {
 
 	public static final String PROCESSDEFINITIONKEY  = "proc_ShippingExchange_AnnouncePayload";
 	public static final String PROCESSDEFINITIONNAME = "Shipping Exchange Announce Payload";

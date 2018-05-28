@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="33fcefbb-7efb-4b6a-a625-e94027755f38" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/modeldd/flowableboot/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/modeldd/flowableboot/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/modeldd/flowableboot/test/ShippingExchange_AnnouncePayload_Test_OLD.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/modeldd/flowableboot/test/FlowablePlay01_Test01.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/modeldd/flowableboot/test/FlowablePlay01_Test01.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/modeldd/flowableboot/test/ShippingExchange_AnnouncePayload_Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/modeldd/flowableboot/test/ShippingExchange_AnnouncePayload_Test.java" afterDir="false" />
     </list>
@@ -22,8 +21,8 @@
             <file pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/src/main/java/org/modeldd/flowableboot/App.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="595">
-                    <caret line="64" column="83" selection-start-line="64" selection-start-column="83" selection-end-line="64" selection-end-column="83" />
+                  <state relative-caret-position="425">
+                    <caret line="246" column="49" lean-forward="true" selection-start-line="242" selection-start-column="16" selection-end-line="246" selection-end-column="49" />
                     <folding>
                       <element signature="e#866#867#0" expanded="true" />
                       <element signature="e#920#921#0" expanded="true" />
@@ -43,6 +42,15 @@
                 </provider>
               </entry>
             </file>
+            <file pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/src/test/java/org/modeldd/flowableboot/test/ShippingExchange_AnnouncePayload_Test_OLD.java">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="419">
+                    <caret line="129" lean-forward="true" selection-start-line="129" selection-end-line="129" />
+                  </state>
+                </provider>
+              </entry>
+            </file>
           </leaf>
         </state>
       </content>
@@ -51,44 +59,13 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/org/modeldd/flowableboot/test/helpers/restapi/FlowableRESTAPIhelper.java">
+        <entry file="file://$PROJECT_DIR$/src/test/java/org/modeldd/flowableboot/test/ShippingExchange_AnnouncePayload_Test.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="627">
-              <caret line="292" column="56" lean-forward="true" selection-start-line="292" selection-start-column="56" selection-end-line="292" selection-end-column="56" />
+            <state relative-caret-position="329">
+              <caret line="173" column="46" selection-start-line="173" selection-start-column="46" selection-end-line="173" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#9622#9630#0" expanded="true" />
-                <element signature="e#11723#11731#0" expanded="true" />
-                <element signature="e#15403#15411#0" expanded="true" />
-                <element signature="e#16091#16105#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/flowable/flowable-rest/6.3.1/flowable-rest-6.3.1-sources.jar!/org/flowable/rest/service/api/runtime/task/TaskActionRequest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-test/1.5.10.RELEASE/spring-boot-test-1.5.10.RELEASE-sources.jar!/org/springframework/boot/test/web/client/TestRestTemplate.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="287">
-              <caret line="118" column="53" selection-start-line="118" selection-start-column="41" selection-end-line="118" selection-end-column="53" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/flowable/flowable-common-rest/6.3.1/flowable-common-rest-6.3.1-sources.jar!/org/flowable/common/rest/api/DataResponse.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -96,61 +73,25 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/org/modeldd/flowableboot/test/FlowablePlay01_Test01.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="379">
-              <caret line="150" column="5" lean-forward="true" selection-start-line="150" selection-start-column="5" selection-end-line="150" selection-end-column="5" />
+            <state relative-caret-position="187">
+              <caret line="11" column="33" lean-forward="true" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#5904#5920#0" expanded="true" />
-                <element signature="e#8146#8161#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/flowable/flowable-rest/6.3.1/flowable-rest-6.3.1-sources.jar!/org/flowable/rest/service/api/engine/variable/RestVariable.java">
+        <entry file="file://$PROJECT_DIR$/src/test/java/org/modeldd/flowableboot/test/helpers/restapi/FlowableRESTAPIhelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="26" column="43" lean-forward="true" selection-start-line="26" selection-start-column="43" selection-end-line="26" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/flowable/flowable-common-rest/6.3.1/flowable-common-rest-6.3.1-sources.jar!/org/flowable/common/rest/variable/EngineRestVariable.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/org/modeldd/flowableboot/test/TaskResponseForTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="46" column="13" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/org/modeldd/flowableboot/test/ShippingExchange_AnnouncePayload_Test.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1309">
-              <caret line="71" column="13" selection-start-line="71" selection-start-column="13" selection-end-line="71" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/flowable/flowable-rest/6.3.1/flowable-rest-6.3.1-sources.jar!/org/flowable/rest/service/api/runtime/process/ProcessInstanceCreateRequest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
+            <state relative-caret-position="1409">
+              <caret line="153" column="43" selection-start-line="153" selection-start-column="43" selection-end-line="153" selection-end-column="43" />
               <folding>
-                <element signature="e#3218#3219#0" expanded="true" />
-                <element signature="e#3260#3261#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#9622#9630#0" expanded="true" />
+                <element signature="e#11723#11731#0" expanded="true" />
+                <element signature="e#15404#15412#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -169,14 +110,17 @@
       <find>template_</find>
       <find>json_ProcessDefinitionResponse</find>
       <find>this.json_</find>
-      <find>;</find>
       <find>println( &quot;\n\n&quot; + aMethodName + &quot; END&quot;)</find>
+      <find>someHttpHeaders</find>
+      <find>;</find>
+      <find>TaskResponse</find>
     </findStrings>
     <replaceStrings>
       <replace>&amp;&amp;</replace>
       <replace>this._v_Json_</replace>
-      <replace>,</replace>
       <replace>println( aMethodName + &quot;END\n\n&quot;)</replace>
+      <replace>,</replace>
+      <replace>aMethodName + &quot; END</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -185,10 +129,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/org/modeldd/flowableboot/App.java" />
         <option value="$PROJECT_DIR$/src/test/java/org/modeldd/flowableboot/test/helpers/restapi/FlowableRESTAPIhelpers.java" />
-        <option value="$PROJECT_DIR$/src/test/java/org/modeldd/flowableboot/test/FlowablePlay01_Test01.java" />
         <option value="$PROJECT_DIR$/src/test/java/org/modeldd/flowableboot/test/helpers/restapi/FlowableRESTAPIhelper.java" />
+        <option value="$PROJECT_DIR$/src/test/java/org/modeldd/flowableboot/test/ShippingExchange_AnnouncePayload_Test_OLD.java" />
+        <option value="$PROJECT_DIR$/src/test/java/org/modeldd/flowableboot/test/FlowablePlay01_Test01.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/modeldd/flowableboot/App.java" />
+        <option value="$PROJECT_DIR$/src/test/java/org/modeldd/flowableboot/test/ShippingExchange_AnnouncePayload_Test.java" />
       </list>
     </option>
   </component>
@@ -408,7 +354,7 @@
         <observation name="typedSelect" value="52.0" />
       </dailyData>
       <dailyData date="28-5-2018">
-        <observation name="cancelled" value="451.0" />
+        <observation name="cancelled" value="471.0" />
         <observation name="explicitSelect" value="23.0" />
         <observation name="typedSelect" value="72.0" />
       </dailyData>
@@ -426,7 +372,7 @@
         <observation name="count" value="340.0" />
       </dailyData>
       <dailyData date="28-5-2018">
-        <observation name="count" value="546.0" />
+        <observation name="count" value="566.0" />
       </dailyData>
     </factor>
     <factor id="doubleFeature:explicitProximity">
@@ -1076,6 +1022,11 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.modeldd.flowableboot.test" />
+    </key>
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -1157,8 +1108,8 @@
       <window_info id="Web" side_tool="true" />
       <window_info id="Designer" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4989339" visible="true" weight="0.24959128" />
-      <window_info id="Structure" order="1" sideWeight="0.5010661" side_tool="true" visible="true" weight="0.24959128" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4989339" visible="true" weight="0.24959128" />
+      <window_info active="true" id="Structure" order="1" sideWeight="0.5010661" side_tool="true" visible="true" weight="0.24959128" />
       <window_info anchor="bottom" id="Messages" weight="0.32942432" />
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" />
@@ -1193,7 +1144,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/org/modeldd/flowableboot/test/FlowablePlay01_Test01.java</url>
-          <line>110</line>
+          <line>96</line>
           <properties />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
@@ -1269,13 +1220,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/modeldd/flowableboot/test/ShippingExchange_AnnouncePayload_Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1309">
-          <caret line="71" column="13" selection-start-line="71" selection-start-column="13" selection-end-line="71" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/org/modeldd/flowableboot/test/TaskResponseForTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -1290,10 +1234,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-test/1.5.10.RELEASE/spring-boot-test-1.5.10.RELEASE-sources.jar!/org/springframework/boot/test/web/client/TestRestTemplate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="118" column="53" selection-start-line="118" selection-start-column="41" selection-end-line="118" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/modeldd/flowableboot/test/helpers/restapi/FlowableRESTAPIhelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1409">
+          <caret line="153" column="43" selection-start-line="153" selection-start-column="43" selection-end-line="153" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#9622#9630#0" expanded="true" />
+            <element signature="e#11723#11731#0" expanded="true" />
+            <element signature="e#15404#15412#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/modeldd/flowableboot/test/FlowablePlay01_Test01.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="33" lean-forward="true" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/modeldd/flowableboot/test/ShippingExchange_AnnouncePayload_Test_OLD.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="419">
+          <caret line="129" lean-forward="true" selection-start-line="129" selection-end-line="129" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/modeldd/flowableboot/App.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="64" column="83" selection-start-line="64" selection-start-column="83" selection-end-line="64" selection-end-column="83" />
+        <state relative-caret-position="425">
+          <caret line="246" column="49" lean-forward="true" selection-start-line="242" selection-start-column="16" selection-end-line="246" selection-end-column="49" />
           <folding>
             <element signature="e#866#867#0" expanded="true" />
             <element signature="e#920#921#0" expanded="true" />
@@ -1303,35 +1284,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-test/1.5.10.RELEASE/spring-boot-test-1.5.10.RELEASE-sources.jar!/org/springframework/boot/test/web/client/TestRestTemplate.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/modeldd/flowableboot/test/ShippingExchange_AnnouncePayload_Test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="118" column="53" selection-start-line="118" selection-start-column="41" selection-end-line="118" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/modeldd/flowableboot/test/FlowablePlay01_Test01.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="150" column="5" lean-forward="true" selection-start-line="150" selection-start-column="5" selection-end-line="150" selection-end-column="5" />
+        <state relative-caret-position="329">
+          <caret line="173" column="46" selection-start-line="173" selection-start-column="46" selection-end-line="173" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5904#5920#0" expanded="true" />
-            <element signature="e#8146#8161#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/modeldd/flowableboot/test/helpers/restapi/FlowableRESTAPIhelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="627">
-          <caret line="292" column="56" lean-forward="true" selection-start-line="292" selection-start-column="56" selection-end-line="292" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#9622#9630#0" expanded="true" />
-            <element signature="e#11723#11731#0" expanded="true" />
-            <element signature="e#15403#15411#0" expanded="true" />
-            <element signature="e#16091#16105#0" expanded="true" />
           </folding>
         </state>
       </provider>

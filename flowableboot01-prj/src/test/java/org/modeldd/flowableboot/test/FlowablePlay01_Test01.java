@@ -32,44 +32,30 @@ permissions and limitations under the Licence.
 
 package org.modeldd.flowableboot.test;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
-import java.nio.charset.Charset;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import static org.junit.Assert.assertThat;
-import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
-
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+import org.springframework.boot.test.json.JacksonTester;
+import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.flowable.common.rest.api.DataResponse;
 import org.flowable.rest.service.api.repository.ProcessDefinitionResponse;
 import org.flowable.rest.service.api.runtime.process.ProcessInstanceCreateRequest;
 import org.flowable.rest.service.api.runtime.process.ProcessInstanceResponse;
 import org.flowable.rest.service.api.runtime.task.TaskActionRequest;
 import org.flowable.rest.service.api.runtime.task.TaskQueryRequest;
-import org.flowable.rest.service.api.runtime.task.TaskResponse;
-import org.modeldd.flowableboot.App;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-import org.springframework.boot.test.json.JacksonTester;
-import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.junit4.SpringRunner;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.flowable.rest.service.api.engine.variable.RestVariable;
-
-
+import org.modeldd.flowableboot.App;
 import org.modeldd.flowableboot.test.helpers.restapi.FlowableRESTAPIhelper;
 
 

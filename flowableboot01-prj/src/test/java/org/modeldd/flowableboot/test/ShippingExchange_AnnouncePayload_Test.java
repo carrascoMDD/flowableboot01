@@ -1,14 +1,14 @@
 /*
- * org.modeldd.flowableboot.test.ShippingExchange_AnnouncePayload_Test.java
+ * org.modeldd.flowableboot.test.FlowablePlay01_Test01.java
  *
- * Created @author Antonio Carrasco Valero 201805260100
+ * Created @author Antonio Carrasco Valero 201805262149
  *
  *
  ***************************************************************************
 
  Copyright 2018 Antonio Carrasco Valero
  Setup a Flowable ( https://github.com/flowable/flowable-engine) playground as standalone Java application.
- 
+
 Licensed under the EUPL, Version 1.1 only (the "Licence");
 You may not use this work except in compliance with the
 Licence.
@@ -32,179 +32,221 @@ permissions and limitations under the Licence.
 
 package org.modeldd.flowableboot.test;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 import java.nio.charset.Charset;
 
+import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import static org.junit.Assert.assertThat;
-import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
-
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.flowable.common.rest.api.DataResponse;
-import org.flowable.rest.service.api.repository.ProcessDefinitionResponse;
-import org.flowable.rest.service.api.runtime.process.ProcessInstanceResponse;
-import org.flowable.rest.service.api.runtime.task.TaskQueryRequest;
-import org.flowable.rest.service.api.runtime.task.TaskResponse;
-
-
-import org.modeldd.flowableboot.App;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.json.JacksonTester;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-
+import org.flowable.common.rest.api.DataResponse;
+import org.flowable.rest.service.api.repository.ProcessDefinitionResponse;
+import org.flowable.rest.service.api.runtime.process.ProcessInstanceCreateRequest;
+import org.flowable.rest.service.api.runtime.process.ProcessInstanceResponse;
+import org.flowable.rest.service.api.runtime.task.TaskActionRequest;
+import org.flowable.rest.service.api.runtime.task.TaskQueryRequest;
+import org.flowable.rest.service.api.engine.variable.RestVariable;
+import org.modeldd.flowableboot.App;
+import org.modeldd.flowableboot.test.helpers.restapi.FlowableRESTAPIhelper;
 
 
 @RunWith(SpringRunner.class)
-@SpringBootTest( classes = App.class, webEnvironment = WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = App.class, webEnvironment = WebEnvironment.RANDOM_PORT)
 public class ShippingExchange_AnnouncePayload_Test {
 
-	public static final MediaType APPLICATION_JSON_UTF8 = new MediaType(MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
-	
-	public static final String JSON_ProcessInstanceCreateRequest = "{ \"processDefinitionKey\":\"proc_ShippingExchange_AnnouncePayload\", \"variables\": [ { \"name\":\"var_PayloadKind\", \"value\": \"SteelRoll\" }, { \"name\":\"var_PayloadWeight\", \"value\": 12000 }, { \"name\":\"var_PayloadWeightUnit\", \"value\": \"Kg\" }, { \"name\":\"var_PayloadVolume\", \"value\": 2 }, { \"name\":\"var_PayloadWeightUnit\", \"value\": \"M3\" }]}";
-	
-    @Autowired
-    private TestRestTemplate template_ProcessDefinitionResponse;
-    
-    @Autowired
-    private TestRestTemplate template_ProcessInstanceResponse;
+	public static final String PROCESSDEFINITIONKEY  = "proc_ShippingExchange_AnnouncePayload";
+	public static final String PROCESSDEFINITIONNAME = "Shipping Exchange Announce Payload";
 
-    
-    
-    private JacksonTester<DataResponse<ProcessDefinitionResponse>> json_ProcessDefinitionResponse;
-    private JacksonTester<ProcessInstanceResponse>  			   json_ProcessInstanceResponse;
-    private JacksonTester<TaskQueryRequest>  			           json_TaskQueryRequest;
-    private JacksonTester<DataResponse<TaskResponse>> 		       json_TaskResponse;
+	@Before
+	public void setup() {
+		ObjectMapper objectMapper = new ObjectMapper();
+		// Possibly configure the mapper
+		JacksonTester.initFields(this, objectMapper);
+	}
 
-    
-    
-    
-    @Before
-    public void setup() {
-        ObjectMapper objectMapper = new ObjectMapper(); 
-        // Possibly configure the mapper
-        JacksonTester.initFields(this, objectMapper);
-    }
+	@Test
+	public void contextLoads() throws Exception {
+	}
 
+	@Autowired
+	TestRestTemplate testRestTemplate;
+
+
+	public JacksonTester<DataResponse<ProcessDefinitionResponse>> 	json_ProcessDefinitionResponse;
+	public JacksonTester<ProcessInstanceCreateRequest> 				json_ProcessInstanceCreateRequest;
+	public JacksonTester<ProcessInstanceResponse> 					json_ProcessInstanceResponse;
+	public JacksonTester<TaskQueryRequest>  						json_TaskQueryRequest;
+	public JacksonTester<DataResponse<TaskResponseForTest>> 		json_TaskResponseForTest;
+	public JacksonTester<List<RestVariable>> 						json_ListRestVariable;
+	public JacksonTester<TaskActionRequest> 						json_TaskActionRequest;
 
 
 	@Test
-    public void contextLoads() throws Exception {
-    }
-	
-	@Test
-	public void repositoryService_createProcessDefinitionQuery_count() throws Exception {
-		
-		ResponseEntity<String> response = template_ProcessDefinitionResponse.getForEntity("/process-api/repository/process-definitions", String.class);     
-        assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
-        
-        String aResponseBody = response.getBody();
-        System.out.println( "\n\nGET /process-api/repository/process-definitions responseBody=" + aResponseBody);
+	public void repositoryService_createProcessDefinitionQuery() throws Exception {
 
-        DataResponse<ProcessDefinitionResponse> aDataProcessDefinitionResponse = this.json_ProcessDefinitionResponse.parse( aResponseBody).getObject();
-        
-        System.out.println( "GET /process-api/repository/process-definitions response=\n" + this.json_ProcessDefinitionResponse.write( aDataProcessDefinitionResponse).getJson() + "\n\n");
-        
-        List<ProcessDefinitionResponse> someProcessDefinitionResponses = aDataProcessDefinitionResponse.getData();
-        assertThat( someProcessDefinitionResponses.size(), is( 2));
 
-        ProcessDefinitionResponse aProcessDefinitionResponse_flowableplay01 = someProcessDefinitionResponses.get( 0);       
-        assertThat( aProcessDefinitionResponse_flowableplay01, notNullValue());
-        assertThat( aProcessDefinitionResponse_flowableplay01.getId(), notNullValue());
-        assertThat( aProcessDefinitionResponse_flowableplay01.getUrl(), notNullValue());
-        assertThat( aProcessDefinitionResponse_flowableplay01.getKey(), is( "flowableplay01"));
-        assertThat( aProcessDefinitionResponse_flowableplay01.getName(), is( "FlowablePlay01 BPMN2"));
-        assertThat( aProcessDefinitionResponse_flowableplay01.getDeploymentId(), notNullValue());
-        assertThat( aProcessDefinitionResponse_flowableplay01.getDeploymentUrl(), notNullValue());
+		FlowableRESTAPIhelper aHelper = new FlowableRESTAPIhelper(
+				testRestTemplate,
+				true /* theAssertEssential */,
+				true /* theAssertNonEssential */,
+				true /* theDumpUrl */,
+				true /* theDumpRequestParms */,
+				true /* theDumpRequestBody */,
+				true /* theDumpRawResponse */,
+				true /* theDumpParsedRespons */,
+				json_ProcessDefinitionResponse,
+				json_ProcessInstanceCreateRequest,
+				json_ProcessInstanceResponse,
+				json_TaskQueryRequest,
+				json_TaskResponseForTest,
+				json_ListRestVariable,
+				json_TaskActionRequest
+		);
 
-        ProcessDefinitionResponse aProcessDefinitionResponse_ShippingExchange = someProcessDefinitionResponses.get( 1);       
-        assertThat( aProcessDefinitionResponse_ShippingExchange, notNullValue());
-        assertThat( aProcessDefinitionResponse_ShippingExchange.getId(), notNullValue());
-        assertThat( aProcessDefinitionResponse_ShippingExchange.getUrl(), notNullValue());
-        assertThat( aProcessDefinitionResponse_ShippingExchange.getKey(), is( "proc_ShippingExchange_AnnouncePayload"));
-        assertThat( aProcessDefinitionResponse_ShippingExchange.getName(), is( "Shipping Exchange Announce Payload"));
-        assertThat( aProcessDefinitionResponse_ShippingExchange.getDeploymentId(), notNullValue());
-        assertThat( aProcessDefinitionResponse_ShippingExchange.getDeploymentUrl(), notNullValue());
+		List<ProcessDefinitionResponse> someProcessDefinitionResponses = aHelper.repositoryService_createProcessDefinitionQuery();
 
+		Integer aNumProcessDefinitionResponses = someProcessDefinitionResponses.size();
+		assertThat( aNumProcessDefinitionResponses > 0, is(true));
+		Integer aFoundProcessDefinitionResponse = -1;
+		for( Integer aProcessDefinitionResponseIdx=0; aProcessDefinitionResponseIdx < aNumProcessDefinitionResponses; aProcessDefinitionResponseIdx++) {
+			ProcessDefinitionResponse aProcessDefinitionResponse = someProcessDefinitionResponses.get( aProcessDefinitionResponseIdx);
+			assertThat(aProcessDefinitionResponse, notNullValue());
+
+			String aKey = aProcessDefinitionResponse.getKey();
+			String aName = aProcessDefinitionResponse.getKey();
+			assertThat(aKey, notNullValue());
+			assertThat(aName, notNullValue());
+			if( aKey.equals( PROCESSDEFINITIONKEY) || aName.equals( PROCESSDEFINITIONNAME)) {
+				aFoundProcessDefinitionResponse = aProcessDefinitionResponseIdx;
+			}
+			assertThat(aProcessDefinitionResponse.getId(), notNullValue());
+			assertThat(aProcessDefinitionResponse.getUrl(), notNullValue());
+			assertThat(aProcessDefinitionResponse.getDeploymentId(), notNullValue());
+			assertThat(aProcessDefinitionResponse.getDeploymentUrl(), notNullValue());
+		}
+		assertThat( aFoundProcessDefinitionResponse >= 0, is(true));
 	}
 
 
+
 	@Test
-	public void runtimeService_startProcessInstanceByKey() throws Exception {		
-		
-		if( true) {
-			HttpHeaders headers = new HttpHeaders();
-			headers.setContentType( APPLICATION_JSON_UTF8);
+	public void startProcessInstanceByKey_createTaskQuery_getVariables_complete_createHistoricActivityInstanceQuery_createHistoricVariableInstanceQuery()
+			throws Exception {
 
-			HttpEntity<String> entity = new HttpEntity<String>( JSON_ProcessInstanceCreateRequest,headers);
-			
-			ResponseEntity<String> response = template_ProcessInstanceResponse.postForEntity("/process-api/runtime/process-instances", entity, String.class);     
-	        assertThat(response.getStatusCode(), equalTo(HttpStatus.CREATED));
-	        
-	        String aResponseBody = response.getBody();
-	        System.out.println( "\n\nPOST /process-api/runtime/process-instances responseBody=" + aResponseBody);
-	        
-	        ProcessInstanceResponse aDataProcessInstanceResponse = this.json_ProcessInstanceResponse.parse( aResponseBody).getObject();
-	        
-	        System.out.println( "POST /process-api/runtime/process-instances response=\n" + this.json_ProcessInstanceResponse.write( aDataProcessInstanceResponse).getJson() + "\n\n");
-	        
-	        assertThat(aDataProcessInstanceResponse.getId(), notNullValue());
-	        assertThat(aDataProcessInstanceResponse.getUrl(), notNullValue());
-	        assertThat(aDataProcessInstanceResponse.getProcessDefinitionId(), notNullValue());
-	        assertThat(aDataProcessInstanceResponse.getProcessDefinitionUrl(), notNullValue());
-	        
-		}
-		
-        
-		if( true) {
-			HttpHeaders headers = new HttpHeaders();
-			headers.setContentType( APPLICATION_JSON_UTF8);
+		FlowableRESTAPIhelper aHelper = new FlowableRESTAPIhelper(
+				testRestTemplate,
+				true /* theAssertEssential */,
+				true /* theAssertNonEssential */,
+				true /* theDumpUrl */,
+				true /* theDumpRequestParms */,
+				true /* theDumpRequestBody */,
+				true /* theDumpRawResponse */,
+				true /* theDumpParsedRespons */,
+				json_ProcessDefinitionResponse,
+				json_ProcessInstanceCreateRequest,
+				json_ProcessInstanceResponse,
+				json_TaskQueryRequest,
+				json_TaskResponseForTest,
+				json_ListRestVariable,
+				json_TaskActionRequest);
 
-			TaskQueryRequest aTaskQueryRequest = new TaskQueryRequest();
-	        aTaskQueryRequest.setCandidateGroup( "managers");	        
-	        String aJSON_TaskQueryRequest = this.json_TaskQueryRequest.write( aTaskQueryRequest).getJson();
-	        
-			HttpEntity<String> entity = new HttpEntity<String>( aJSON_TaskQueryRequest,headers);
-			
-			ResponseEntity<String> response = template_ProcessInstanceResponse.postForEntity("/process-api/query/tasks", entity, String.class);     
-	        assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
-	        
-	        String aResponseBody = response.getBody();
-	        System.out.println( "\n\nPOST /process-api/query/tasks responseBody=" + aResponseBody);
-	        
-	        DataResponse<TaskResponse> aDataTaskResponse = this.json_TaskResponse.parse( aResponseBody).getObject();
-	        
-	        System.out.println( "POST /process-api/query/tasks response=\n" + this.json_TaskResponse.write( aDataTaskResponse).getJson() + "\n\n");
-	        
-	        assertThat( aDataTaskResponse, notNullValue());
-	        List<TaskResponse> someTaskResponses = aDataTaskResponse.getData();
-	        assertThat(someTaskResponses.size(), is( 1));
-	        
-	        TaskResponse aTaskResponse = someTaskResponses.get( 0);       
-	        assertThat(aTaskResponse.getId(), notNullValue());
-	        assertThat(aTaskResponse.getUrl(), notNullValue());
-	        assertThat(aTaskResponse.getProcessDefinitionId(), notNullValue());
-	        assertThat(aTaskResponse.getProcessDefinitionUrl(), notNullValue());
-	        
-		}
-		
-        
-        
-        
-        
+
+		this.runtimeService_startProcessInstanceByKey( aHelper,
+				"SteelRoll" /* thePayloadKind */,
+				12000 /* thePayloadWeight */,
+				"Kg" /* thePayloadWeightUnit */,
+				2 /* thePayloadVolume */,
+				"M3" /* thePayloadVolumeUnit*/);
+
+		TaskResponseForTest aTaskResponseForTest = taskService_createTaskQuery_returnFirst( aHelper, "shippingClients");
+
+		List<RestVariable> someTaskVariables = taskService_getVariables( aHelper, aTaskResponseForTest);
+		Boolean aCompleted = taskService_complete( aHelper, aTaskResponseForTest, true);
 	}
-	
+
+
+
+
+	private void runtimeService_startProcessInstanceByKey( FlowableRESTAPIhelper theHelper,
+														   String thePayloadKind,
+														   Integer thePayloadWeight,
+														   String thePayloadWeightUnit,
+														   Integer thePayloadVolume,
+														   String thePayloadVolumeUnit) throws Exception {
+
+		Map<String, Object> someVariables = new HashMap<String, Object>();
+		someVariables.put("var_PayloadKind", thePayloadKind);
+		someVariables.put("var_PayloadWeight", thePayloadWeight);
+		someVariables.put("var_PayloadWeightUnit", thePayloadWeightUnit);
+		someVariables.put("var_PayloadVolume", thePayloadVolume);
+		someVariables.put("var_PayloadVolumetUnit", thePayloadVolumeUnit);
+
+
+		ProcessInstanceResponse aProcessInstanceResponse = theHelper.runtimeService_startProcessInstanceByKey(
+				PROCESSDEFINITIONKEY, someVariables);
+
+		assertThat( aProcessInstanceResponse, notNullValue());
+		assertThat( aProcessInstanceResponse.getId(), notNullValue());
+		assertThat( aProcessInstanceResponse.getUrl(), notNullValue());
+		assertThat( aProcessInstanceResponse.getProcessDefinitionId(), notNullValue());
+		assertThat( aProcessInstanceResponse.getProcessDefinitionUrl(), notNullValue());
+	}
+
+
+
+	private TaskResponseForTest taskService_createTaskQuery_returnFirst( FlowableRESTAPIhelper theHelper,
+																		 String theCandidateGroupName) throws Exception {
+
+		List<TaskResponseForTest> someTaskResponseForTest = theHelper.taskService_createTaskQuery_taskCandidateGroup( theCandidateGroupName);
+		assertThat( someTaskResponseForTest, notNullValue());
+		Integer aNumTaskResponseForTest = someTaskResponseForTest.size();
+		assertThat( aNumTaskResponseForTest > 0, is( true));
+
+		TaskResponseForTest aTaskResponseForTest = someTaskResponseForTest.get( 0);
+		assertThat( aTaskResponseForTest, notNullValue());
+
+		return aTaskResponseForTest;
+	}
+
+
+
+	private List<RestVariable> taskService_getVariables( FlowableRESTAPIhelper theHelper,
+														 TaskResponseForTest theTaskResponse) throws Exception {
+
+		List<RestVariable> someRestVariables = theHelper.taskService_getVariables( theTaskResponse.getId(), null /* theScope */);
+		theHelper.dumpTaskVariables( someRestVariables);
+		return someRestVariables;
+	}
+
+
+
+
+
+	private Boolean taskService_complete( FlowableRESTAPIhelper theHelper,
+										  TaskResponseForTest theTaskResponse,
+										  Boolean theApproved) throws Exception {
+
+		Map<String,Object> someVariables = new HashMap<String,Object>();
+		someVariables.put( "approved", theApproved);
+		Boolean aCompleted = theHelper.taskService_complete( theTaskResponse.getId(), someVariables);
+		assertThat( aCompleted, is( true));
+		return aCompleted;
+	}
+
+
 }
-

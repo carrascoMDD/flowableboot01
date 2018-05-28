@@ -1,5 +1,5 @@
 /*
- * org.modeldd.flowableboot.test.FlowablePlay01_Test01.java
+ * org.modeldd.flowableboot.test.FlowablePlay01Test.java
  *
  * Created @author Antonio Carrasco Valero 201805262149
  *
@@ -61,7 +61,7 @@ import org.modeldd.flowableboot.test.helpers.restapi.FlowableRESTAPIhelper;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = App.class, webEnvironment = WebEnvironment.RANDOM_PORT)
-public class FlowablePlay01_Test01 {
+public class FlowablePlay01Test {
 
 	public static final String PROCESSDEFINITIONKEY  = "flowableplay01";
 	public static final String PROCESSDEFINITIONNAME = "FlowablePlay01 BPMN2";

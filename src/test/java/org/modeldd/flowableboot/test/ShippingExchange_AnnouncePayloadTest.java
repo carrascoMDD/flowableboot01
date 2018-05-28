@@ -1,5 +1,5 @@
 /*
- * org.modeldd.flowableboot.test.FlowablePlay01_Test01.java
+ * org.modeldd.flowableboot.test.FlowablePlay01Test.java
  *
  * Created @author Antonio Carrasco Valero 201805262149
  *
@@ -67,7 +67,7 @@ import org.modeldd.flowableboot.test.helpers.restapi.FlowableRESTAPIhelper;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = App.class, webEnvironment = WebEnvironment.RANDOM_PORT)
-public class ShippingExchange_AnnouncePayload_Test01 {
+public class ShippingExchange_AnnouncePayloadTest {
 
 	public static final String PROCESSDEFINITIONKEY  = "proc_ShippingExchange_AnnouncePayload";
 	public static final String PROCESSDEFINITIONNAME = "Shipping Exchange Announce Payload";
